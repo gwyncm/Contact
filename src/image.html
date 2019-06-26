@@ -1,0 +1,69 @@
+<html>
+<head>
+    <title>jQuery Labs</title>
+    <script src="/jquery/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            //jQuery code here
+            $("#gallery img").load(sizeImage);
+            $("#gallery img").click(showImage);
+            showImage(); //Show first image
+        });
+        var imageList = [
+            { src: "/labs/images/annie.jpg", caption: "Annie the cat" },
+            { src: "/labs/images/cave.jpg", caption: "Sea cave" },
+            { src: "/labs/images/desert.jpg", caption: "Neat desert scene" },
+            { src: "/labs/images/poppy.jpg", caption: "California poopy field" }
+        ];
+        var idx = -1;
+        function showImage() {
+            ++idx;
+            if (idx >= imageList.length) {
+                idx = 0;
+            }
+            if (idx < imageList.length) {
+                var imgE = $("#gallery img").get(0);
+                imgE.style.height = "auto";
+                imgE.style.width = "auto";
+                imgE.src = imageList[idx].src;
+            }
+        }
+        function sizeImage() {
+            var imgE = $("#gallery img").get(0);
+            var yScale = imgE.height / window.innerHeight;
+            var xScale = imgE.width / window.innerWidth;
+            //Pick the maximum scale
+            if (yScale >= xScale) {
+                //Height needs to be fit
+                imgE.style.height = window.innerHeight;
+                imgE.style.width = 'auto';
+            } else {
+                //Width needs to be fit
+                imgE.style.width = window.innerWidth;
+                imgE.style.height = 'auto';
+            }
+        }
+    </script>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        body {
+            background: black
+        }
+        #gallery {
+            text-align: center;
+            margin-top: 0px;
+            margin-bottom: 0px;
+            padding: 0px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Body HTML here -->
+    <div id="gallery">
+        <img src="#" />
+    </div>
+</body>
+</html>
