@@ -65,7 +65,7 @@ name: 'contact',
             result => alert("Contact status "+result.status) 
             )
         },
-    add: function(id) {
+    add: function() {
         axios.post('/contacts',this.contact).then(
         result => { this.result = result.data; this.refresh() },
             result => alert("Contact status "+result.status) 
